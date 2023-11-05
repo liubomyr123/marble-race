@@ -18,6 +18,7 @@ export default function Experience() {
         <Physics debug={false}>
             <Lights />
             <Level
+                // types
                 count={blocksCount}
                 seed={blocksSeed}
             />

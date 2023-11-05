@@ -1,8 +1,9 @@
 import { useGLTF, Text, Float } from '@react-three/drei';
 import { Vector3, useFrame } from '@react-three/fiber';
 import { RigidBody, CuboidCollider, RapierRigidBody } from '@react-three/rapier';
-import { useRef, useState, useMemo } from 'react';
+import { useRef, useState, useMemo, FC } from 'react';
 import * as THREE from 'three';
+import useGame from './stores/useGame';
 
 const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
 
@@ -308,14 +309,34 @@ export function Bounds({
 
 export function Level({
     count = 5,
-    types = [
-        BlockSpinner,
-        BlockAxe,
-        BlockLimbo,
-    ],
+    // types = [
+    //     BlockSpinner,
+    //     BlockAxe,
+    //     BlockLimbo,
+    // ],
     seed = 0
 }) {
+    const types_ = useGame((state) => state.types);
 
+    // console.log({
+    //     types: types_
+    // });
+
+    const types: (
+        typeof BlockLimbo |
+        typeof BlockSpinner |
+        typeof BlockAxe
+    )[] = [];
+
+    if (types_.limbo) {
+        types.push(BlockLimbo)
+    }
+    if (types_.spinner) {
+        types.push(BlockSpinner)
+    }
+    if (types_.wall) {
+        types.push(BlockAxe)
+    }
     const blocks = useMemo(() => {
         const blocksInternal = [];
 

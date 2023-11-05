@@ -74,3 +74,78 @@ body,
 .controls .key.active {
     background: #ffffff99;
 }
+
+.menu {
+    font-size: 55px;
+    color: #ffffff;
+    padding: 10px;
+    pointer-events: auto;
+    cursor: pointer;
+    width: max-content;
+}
+
+.modal-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.modal {
+    margin: 40px;
+    height: 550px;
+    width: 700px;
+    max-width: 700px;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+}
+
+
+.modal-menu {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.modal-menu-header {
+    display: flex;
+    justify-content: center;
+    font-size: 45px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-menu-close {
+    font-size: 25px;
+    display: flex;
+    pointer-events: auto;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: 35px;
+    margin-top: 20px;
+}
+
+.modal-menu-options {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+.modal-menu-option {
+    font-size: 30px;
+    display: flex;
+    pointer-events: auto;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    cursor: pointer;
+    width: fit-content;
+    margin: auto;
+    min-width: 300px;
+}
+
+
+.modal-menu-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}

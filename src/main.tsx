@@ -17,6 +17,7 @@ root.render(
             { name: 'leftward', keys: ['ArrowLeft', 'KeyA'] },
             { name: 'rightward', keys: ['ArrowRight', 'KeyD'] },
             { name: 'restart', keys: ['Enter', 'KeyR'] },
+            { name: 'menu', keys: ['Escape'] },
             { name: 'jump', keys: ['Space'] },
         ]}
     >

@@ -1,28 +1,58 @@
 import { create } from "zustand";
 import { subscribeWithSelector } from 'zustand/middleware'
 
-interface GameState {
+export interface GameState {
     blocksCount: number;
     blocksSeed: number;
     startTime: number;
     endTime: number;
     phase: 'playing' | 'ready' | 'ended';
 
+    types: {
+        wall: boolean,
+        spinner: boolean,
+        limbo: boolean,
+    };
+
     start: () => void;
     restart: () => void;
     end: () => void;
+    updateTypes: (newTypes: Partial<GameState['types']>) => void;
 }
 
 export default create<GameState>()(
     subscribeWithSelector(
         (set) => {
             return {
-                blocksCount: 3,
+                blocksCount: 20,
                 blocksSeed: 0,
                 phase: 'ready',
 
                 startTime: 0,
                 endTime: 0,
+                types: {
+                    wall: true,
+                    spinner: true,
+                    limbo: true,
+                },
+
+                updateTypes: (newTypes: Partial<GameState['types']>) => {
+                    set((state) => {
+                        const types = {
+                            ...state.types,
+                            ...newTypes,
+                        }
+
+                        if (
+                            Object.values(state.types).filter(Boolean).length === 1 &&
+                            Object.values(types).filter(Boolean).length < 1
+                        ) return {};
+
+                        return {
+                            types
+                        };
+                    })
+                },
 
                 start: () => {
                     set((state) => {
