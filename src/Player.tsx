@@ -159,11 +159,13 @@ export default function Player() {
         const bodyPosition = body.current.translation();
 
         const cameraPosition = new THREE.Vector3();
+        // @ts-ignore
         cameraPosition.copy(bodyPosition);
         cameraPosition.z += 2.25;
         cameraPosition.y += 0.65;
 
         const cameraTarget = new THREE.Vector3();
+        // @ts-ignore
         cameraTarget.copy(bodyPosition);
         cameraTarget.y += 0.25;
 

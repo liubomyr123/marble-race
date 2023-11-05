@@ -1,7 +1,7 @@
 import { useGLTF, Text, Float } from '@react-three/drei';
 import { Vector3, useFrame } from '@react-three/fiber';
 import { RigidBody, CuboidCollider, RapierRigidBody } from '@react-three/rapier';
-import { useRef, useState, useMemo, FC } from 'react';
+import { useRef, useState, useMemo } from 'react';
 import * as THREE from 'three';
 import useGame from './stores/useGame';
 
@@ -61,7 +61,7 @@ export function BlockSpinner({
     const [speed] = useState(() => (Math.random() + 0.2) * (Math.random() < 0.5 ? -1 : 1));
 
 
-    useFrame((state, delta) => {
+    useFrame((state) => {
         const time = state.clock.getElapsedTime();
 
         const rotation = new THREE.Quaternion();
@@ -113,7 +113,7 @@ export function BlockLimbo({
     const [timeOffset] = useState(() => Math.random() * Math.PI * 2);
 
 
-    useFrame((state, delta) => {
+    useFrame((state) => {
         const time = state.clock.getElapsedTime();
 
         const y = Math.sin(time + timeOffset) + 1.15;
@@ -168,7 +168,7 @@ export function BlockAxe({
     const [timeOffset] = useState(() => Math.random() * Math.PI * 2);
 
 
-    useFrame((state, delta) => {
+    useFrame((state) => {
         const time = state.clock.getElapsedTime();
 
         const x = Math.sin(time + timeOffset) * 1.25;
